@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "XXWebView.h"
-#import "MJRefresh.h"
+#import <MJRefresh/MJRefresh.h>
 #import "UserAuthorization.h"
 #import "PasswordVerifyManager.h"
 #import "XXWebViewHeader.h"
