@@ -10,7 +10,7 @@
 #import "XXProgressView.h"
 #import "WebErrorView.h"
 #import "DocumentBrowserController.h"
-#import <MJRefresh/MJRefresh.h>
+#import "MJRefresh/MJRefresh.h"
 
 
 @interface XXWebViewController ()<WKScriptMessageHandler, WKNavigationDelegate, UIScrollViewDelegate, UINavigationControllerDelegate, WKUIDelegate>
