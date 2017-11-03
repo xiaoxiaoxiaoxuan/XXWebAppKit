@@ -1,0 +1,207 @@
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>iSee jsbridge Test</title>
+
+<script type="text/javascript">
+    window.iTouziAPP = (function() {
+    function _request(action, params) {
+        window.webkit.messageHandlers.action.postMessage(params);
+    }
+
+    var imps = {
+		// 打开智齿客服
+        openSobot: function(mode) {
+            if (window.javaObj) {
+                return javaObj.openSobot(mode);
+            };
+            window.webkit.messageHandlers.openSobot.postMessage({"mode":mode});
+        },
+		// 当前页面内容是否滑动到了顶部
+		isTop: function(isTop) {
+            if (window.javaObj) {
+                return javaObj.isTop(isTop);
+            };
+            window.webkit.messageHandlers.isTop.postMessage({"isTop":isTop});
+        },
+		// 设置沉浸式状态栏，需要沉浸式状态栏的页面调用
+		// bgColor：状态栏背景色；txtColor 状态栏字体和图标颜色(时间，电池图标等)，txtColor只有黑白两种可选，1表// 示黑色，0表示白色。
+        setStatusBarStyle: function(bgColor, txtColor) {
+			if (window.javaObj) {
+                return javaObj.setStatusBarStyle(bgColor, txtColor);
+            };
+            window.webkit.messageHandlers.setStatusBarStyle.postMessage({"bgColor":bgColor, "txtColor":txtColor});
+        },
+		// 用户登录成功
+		loginSuccess: function(uuid) {
+            if (window.javaObj) {
+                return javaObj.loginSuccess(uuid);
+            };
+            window.webkit.messageHandlers.loginSuccess.postMessage({"uuid":uuid});
+        },
+		// 用户退出登录
+		logout: function() {
+            if (window.javaObj) {
+                return javaObj.logout();
+            };
+            window.webkit.messageHandlers.logout.postMessage({});
+        },
+		// 使用客户端存储在本地存储持久化数据时调用
+		setData: function(key, value) {
+			 if (window.javaObj) {
+                return javaObj.setData(key, value);
+            };
+            window.webkit.messageHandlers.setData.postMessage({"key":key, "value":value});
+        },
+		// 获取使用客户端存储机制存储到本地的数据
+		getData: function(key) {
+            if (window.javaObj) {
+                return javaObj.getData(key);
+            };
+            window.webkit.messageHandlers.getData.postMessage({"key":key});
+        },
+		// 用户登录成功之后，H5告诉移动端标识用户登录状态的Cookie
+		setCookie: function(key, value) {
+			 if (window.javaObj) {
+                return javaObj.setCookie(key, value);
+            };
+            window.webkit.messageHandlers.setCookie.postMessage({"key":key, "value":value});
+        },
+        // 设置原生分享信息
+        showUmengShare: function(text, imageUrl, platform, flag, title, url, description) {
+            if (platform instanceof Array) {
+                platform = platform.join(",");
+            }
+            if (window.javaObj) {
+               return javaObj.showUmengShare(text, imageUrl, platform, flag, title, url, description);
+            };
+            window.webkit.messageHandlers.showUmengShare.postMessage( {
+                "text" : text,
+                "platform" : platform,
+                "imageurl" : imageUrl,
+                "flag" : flag,
+                "title" : title,
+                "url" : url,
+                "description" : description
+            });
+        },
+		share: function(text, imageUrl, platform, flag, title, url, description) {
+            if (platform instanceof Array) {
+                platform = platform.join(",");
+            }
+            if (window.javaObj) {
+				return javaObj.showUmengShare(text, imageUrl, platform, flag, title, url, description||'');
+            };
+             window.webkit.messageHandlers.share.postMessage({
+                "text" : text,
+                "platform" : platform,
+                "imageurl" : imageUrl,
+                "flag" : flag,
+                "title" : title,
+                "url" : url,
+                "description" : description
+            });
+        },
+		
+        Platforms: {
+            WechatTimeline: "WechatTimeline",
+            WechatSession: "WechatSession",
+            Sina: "Sina",
+            Qzone: "Qzone",
+            // QQ
+            QQ: "QQ",
+        }
+    };
+
+    for (var key in imps) {
+        if (window.javaObj && window.javaObj[key]) {
+            imps[key] = (function(mn){
+                return function(){
+                  return window.javaObj[mn].apply(window.javaObj, arguments);
+                }
+            })(key);
+        }
+    }
+
+    return imps;
+
+})();
+</script>
+<body>
+<hr>
+<br>
+<center><h2><a href="javascript:openSobot('1')">Android-打开智齿客服</a></h2></center>
+<center><h2><a href="javascript:isTop(true)">Android-当前页面内容是否滑动到了顶部</a></h2></center>
+<center><h2><a href="javascript:setStatusBarStyle('0xFF00FF', 0)">Android-设置沉浸式状态栏</a></h2></center>
+<center><h2><a href="javascript:loginSuccess('3e22232233223232323fdsf')">Android-用户登录成功</a></h2></center>
+<center><h2><a href="javascript:logout()">Android-用户退出登录</a></h2></center>
+<center><h2><a href="javascript:setData('abc', 'bcd')">Android-使用客户端存储在本地存储持久化数据时调用</a></h2></center>
+<center><h2><a href="javascript:getData('abc')">Android-获取使用客户端存储机制存储到本地的数据</a></h2></center>
+<center><h2><a href="javascript:setCookie('ccc', 'ddd')">Android-用户登录成功之后，H5告诉移动端标识用户登录状态的Cookie</a></h2></center>
+<center><h2><a href="javascript:showUmengShare('hello', 'http://www.circler.cn/poster_pic/1486215911.jpg', 'QQ,Sina,WechatSession,WechatTimeline,Qzone', 'flag', 'title', 'https://m.itouzi.com/itzdefault/wap/securityAssurance', 'description')">Android-设置App本地分享内容</a></h2></center>
+<center><h2><a href="javascript:share('hello', 'http://i.k1982.com/design/up/200810/2008102100451969.jpg', 'QQ', 'flag', 'test','','description')">Android-share2 QQ 测试不带分享目标链接的情况</a></h2></center>
+<center><h2><a href="javascript:share('hello', 'https://cdn4.iconfinder.com/data/icons/transform-edit/100/transform-layers-128.png', 'Sina', 'flag', 'test', 'https://m.itouzi.com/itzdefault/wap/securityAssurance', 'description')">Android-share</a></h2></center>
+<center><h2><a href="javascript:share('hello', 'http://i.k1982.com/design/up/200810/2008102100451969.jpg', 'QQ', 'flag', 'test','https://m.itouzi.com/itzdefault/wap/securityAssurance','description')">Android-share2 QQ </a></h2></center>
+<center><h2><a href="javascript:share('hello', 'https://cdn4.iconfinder.com/data/icons/transform-edit/100/transform-layers-128.png', 'WechatSession', 'flag', 'test', 'https://m.itouzi.com/itzdefault/wap/securityAssurance', 'description')">Android-share3</a></h2></center>
+<center><h2><a href="javascript:share('hello', 'https://cdn4.iconfinder.com/data/icons/transform-edit/100/transform-layers-128.png', 'WechatTimeline', 'flag', 'test', 'https://m.itouzi.com/itzdefault/wap/securityAssurance', 'description')">Android-share4</a></h2></center>
+<center><h2><a href="javascript:share('hello', 'https://cdn4.iconfinder.com/data/icons/transform-edit/100/transform-layers-128.png', 'Qzone', 'flag', 'test', 'https://m.itouzi.com/itzdefault/wap/securityAssurance', 'description')">Android-share5</a></h2></center>
+<center><h2><a href="javascript:share('hello', 'https://cdn4.iconfinder.com/data/icons/transform-edit/100/transform-layers-128.png', 'QQ,Sina,WechatSession,WechatTimeline, Qzone', 'flag', 'test', 'https://m.itouzi.com/itzdefault/wap/securityAssurance', 'description')">Android-shareMultiply</a></h2></center>
+<center><h2><a href="javascript:share('hello', 'https://cdn4.iconfinder.com/data/icons/transform-edit/100/transform-layers-128.png', 'all', 'flag', 'test', 'https://m.itouzi.com/itzdefault/wap/securityAssurance', 'description')">Android-share 打开App分享框，全部可用分享平台</a></h2></center>
+<center><h2><a href="javascript:share('hello', 'https://cdn4.iconfinder.com/data/icons/transform-edit/100/transform-layers-128.png', 'QQ,Sina,WechatSession', 'flag', 'test', 'https://m.itouzi.com/itzdefault/wap/securityAssurance', 'description')">Android-share 打开App分享框, QQ, Sina，微信</a></h2></center>
+
+<hr>
+</br>
+<center><h2><a onclick="openSobot(1)">iOS-打开智齿客服</a></h2></center>
+<center><h2><a onclick="isTop(true)">iOS-当前页面内容是否滑动到了顶部</a></h2></center>
+<center><h2><a onclick="setStatusBarStyle(0xFF00FF, 1)">iOS-设置沉浸式状态栏</a></h2></center>
+<center><h2><a onclick="loginSuccess('fdsfdsfds')">iOS-用户登录成功</a></h2></center>
+<center><h2><a onclick="logout()">iOS-用户退出登录</a></h2></center>
+<center><h2><a onclick="setData('abc', 'bcd')">iOS-使用客户端存储在本地存储持久化数据时调用</a></h2></center>
+<center><h2><a onclick="getData('abc')">iOS-获取使用客户端存储机制存储到本地的数据</a></h2></center>
+<center><h2><a onclick="setCookie('abc', 'bcd')">iOS-用户登录成功之后，H5告诉移动端标识用户登录状态的Cookie</a></h2></center>
+<center><h2><a onclick="showUmengShare('hello', 'http://www.circler.cn/poster_pic/1486215911.jpg', 'QQ,Sina,WechatSession,WechatTimeline,Qzone', 'flag', 'title', 'https://m.itouzi.com/itzdefault/wap/securityAssurance', 'description')">iOS-设置App本地分享内容</a></h2></center>
+<center><h2><a onclick="share('hello', 'https://cdn4.iconfinder.com/data/icons/transform-edit/100/transform-layers-128.png', 'QQ', 'test', 'title', '', 'description')">iOS-设置AppQQ普通分享内容，测试不带目标链接的情况</a></h2></center>
+<center><h2><a onclick="share('hello', 'https://cdn4.iconfinder.com/data/icons/transform-edit/100/transform-layers-128.png', 'QQ', 'test', 'title', 'https://m.itouzi.com/itzdefault/wap/securityAssurance', 'description')">iOS-设置AppQQ普通分享内容，带目标链接的情况</a></h2></center>
+<center><h2><a onclick="share('hello', 'https://cdn4.iconfinder.com/data/icons/transform-edit/100/transform-layers-128.png', 'Sina', 'test', 'title', 'https://m.itouzi.com/itzdefault/wap/securityAssurance', 'description')">iOS-设置App_Sina普通分享内容</a></h2></center>
+<center><h2><a onclick="share('hello', 'https://cdn4.iconfinder.com/data/icons/transform-edit/100/transform-layers-128.png', 'Qzone', 'test', 'title', 'https://m.itouzi.com/itzdefault/wap/securityAssurance', 'description')">iOS-设置App-Qzone本地分享内容</a></h2></center>
+<center><h2><a onclick="share('hello', 'https://cdn4.iconfinder.com/data/icons/transform-edit/100/transform-layers-128.png', 'WechatSession', 'test', 'title', 'https://m.itouzi.com/itzdefault/wap/securityAssurance', 'description')">iOS-设置App——WechatSession普通分享内容</a></h2></center>
+<center><h2><a onclick="share('hello', 'https://cdn4.iconfinder.com/data/icons/transform-edit/100/transform-layers-128.png', 'WechatTimeline', 'test', 'title', 'https://m.itouzi.com/itzdefault/wap/securityAssurance', 'description')">iOS-设置App-WechatTimeline普通分享内容</a></h2></center>
+<center><h2><a onclick="share('hello', 'https://cdn4.iconfinder.com/data/icons/transform-edit/100/transform-layers-128.png', 'QQ,Sina,WechatSession', 'test', 'title', 'https://m.itouzi.com/itzdefault/wap/securityAssurance', 'description')">iOS-分享，打开App分享框，QQ，Sina，微信台</a></h2></center>
+<center><h2><a onclick="share('hello', 'https://cdn4.iconfinder.com/data/icons/transform-edit/100/transform-layers-128.png', 'QQ,Sina,WechatSession,WechatTimeline,Qzone', 'test', 'title', 'https://m.itouzi.com/itzdefault/wap/securityAssurance', 'description')">iOS-设置App本地分享内容</a></h2></center>
+<center><h2><a onclick="share('hello', 'https://cdn4.iconfinder.com/data/icons/transform-edit/100/transform-layers-128.png', 'all', 'test', 'title', 'https://m.itouzi.com/itzdefault/wap/securityAssurance', 'description')">iOS-分享，打开App分享框，全部可用分享平台</a></h2></center>
+
+</body>
+<script type="text/javascript">
+    function openSobot(mode) {
+        iTouziAPP.openSobot(mode);
+    }
+	function isTop(isTop) {
+        iTouziAPP.isTop(isTop);
+    }
+	function setStatusBarStyle(bgColor, txtColor) {
+        iTouziAPP.setStatusBarStyle(bgColor, txtColor);
+    }
+	function loginSuccess(uuid) {
+        iTouziAPP.loginSuccess(uuid);
+    }
+	function logout() {
+        iTouziAPP.logout();
+    }
+	function setData(key, value) {
+        iTouziAPP.setData(key, value);
+    }
+	function getData(key) {
+        iTouziAPP.getData(key);
+    }
+	function setCookie(key, value) {
+        iTouziAPP.setCookie(key, value);
+    }
+	function showUmengShare(text, imageUrl, platform, flag, title, url, description) {
+        iTouziAPP.showUmengShare(text, imageUrl, platform, flag, title, url, description);
+    }
+	function share(text, imageUrl, platform, flag, title, url, description) {
+        iTouziAPP.share(text, imageUrl, platform, flag, title, url, description);
+    }
+</script>
+</html>
