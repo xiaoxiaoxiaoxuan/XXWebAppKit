@@ -1,11 +1,11 @@
 PODS:
-  - MJRefresh (3.1.12)
+  - MJRefresh (3.1.15)
 
 DEPENDENCIES:
   - MJRefresh
 
 SPEC CHECKSUMS:
-  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  MJRefresh: 9af70f5f9327a2cf87f0fb5929f35fcc2fa638ea
 
 PODFILE CHECKSUM: 3345f5b1f88182d1a44e3252d2773b3e229fcfba
 
