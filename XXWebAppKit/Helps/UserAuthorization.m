@@ -60,7 +60,7 @@
     // 清理 WKWebView 缓存
     [Tools clearCache];
     // 移除手势密码
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:GesturePasswordStoreKey];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:GestureOrSingerPasswordStoreKey];
     // 移除用户uuid,即登录凭证
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"phoneNum"];
     // 跳过手势密码key

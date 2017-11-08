@@ -397,7 +397,7 @@
 
 
 /*
- *  展示验证密码输入框
+ *  展示修改密码输入框
  */
 +(instancetype)showModifyLockVCInVC:(UIViewController *)vc successBlock:(void(^)(CLLockVC *lockVC, NSString *pwd))successBlock{
     

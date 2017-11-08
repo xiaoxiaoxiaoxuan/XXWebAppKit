@@ -17,11 +17,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [PasswordVerifyManager sharedManger].isOpenGesture = YES;
+    [PasswordVerifyManager sharedManger].isOpenGestureOrSinger = YES;
+    [PasswordVerifyManager sharedManger].isOpenSinger = YES;
     [PasswordVerifyManager sharedManger].seconds_between = 10;
     [self loadLocationHTMLWithName:@"test" andExtension:@"html" subdirectory:@"html"];
     
     // Do any additional setup after loading the view.
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [[PasswordVerifyManager sharedManger] handleGesturePasswordViewController];
+    });
 }
 
 - (void)addScriptUseOCMethods {

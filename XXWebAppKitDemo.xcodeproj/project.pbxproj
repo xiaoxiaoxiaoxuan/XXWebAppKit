@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2362A5251FB1C103006970FE /* XXFingerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2362A5231FB1C103006970FE /* XXFingerViewController.m */; };
+		2362A5261FB1C103006970FE /* XXFingerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2362A5241FB1C103006970FE /* XXFingerViewController.xib */; };
 		2364DF541FAC0F9200DB7B90 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2364DF531FAC0F9200DB7B90 /* AppDelegate.m */; };
 		2364DF571FAC0F9200DB7B90 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2364DF561FAC0F9200DB7B90 /* ViewController.m */; };
 		2364DF5A1FAC0F9200DB7B90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2364DF581FAC0F9200DB7B90 /* Main.storyboard */; };
@@ -42,6 +44,11 @@
 
 /* Begin PBXFileReference section */
 		1471F964E1B9F6C98EA85974 /* Pods-XXWebAppKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XXWebAppKitDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-XXWebAppKitDemo/Pods-XXWebAppKitDemo.release.xcconfig"; sourceTree = "<group>"; };
+		2362A5221FB1C103006970FE /* XXFingerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXFingerViewController.h; sourceTree = "<group>"; };
+		2362A5231FB1C103006970FE /* XXFingerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXFingerViewController.m; sourceTree = "<group>"; };
+		2362A5241FB1C103006970FE /* XXFingerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XXFingerViewController.xib; sourceTree = "<group>"; };
+		2362A5281FB1C3A3006970FE /* img_finger@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_finger@2x.png"; sourceTree = "<group>"; };
+		2362A5291FB1C3A3006970FE /* img_finger@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_finger@3x.png"; sourceTree = "<group>"; };
 		2364DF4F1FAC0F9200DB7B90 /* XXWebAppKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XXWebAppKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2364DF521FAC0F9200DB7B90 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2364DF531FAC0F9200DB7B90 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -115,6 +122,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2362A5271FB1C399006970FE /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				2362A5281FB1C3A3006970FE /* img_finger@2x.png */,
+				2362A5291FB1C3A3006970FE /* img_finger@3x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		2364DF461FAC0F9200DB7B90 = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +172,7 @@
 		2364DF721FAC107400DB7B90 /* XXWebAppKit */ = {
 			isa = PBXGroup;
 			children = (
+				2362A5271FB1C399006970FE /* Images */,
 				2364DF991FAC19D200DB7B90 /* GesturePwd */,
 				2364DF8A1FAC11D000DB7B90 /* Helps */,
 				2364DF7F1FAC10D300DB7B90 /* Controllers */,
@@ -207,6 +224,9 @@
 				2364DF9A1FAC19D200DB7B90 /* CoreLock */,
 				2364DFB81FAC19D200DB7B90 /* GesturePasswordViewController.h */,
 				2364DFB91FAC19D200DB7B90 /* GesturePasswordViewController.m */,
+				2362A5221FB1C103006970FE /* XXFingerViewController.h */,
+				2362A5231FB1C103006970FE /* XXFingerViewController.m */,
+				2362A5241FB1C103006970FE /* XXFingerViewController.xib */,
 				2364DFBA1FAC19D200DB7B90 /* PasswordVerifyManager.h */,
 				2364DFBB1FAC19D200DB7B90 /* PasswordVerifyManager.m */,
 			);
@@ -364,6 +384,7 @@
 			files = (
 				2364DF7C1FAC109E00DB7B90 /* WebErrorView.xib in Resources */,
 				2364DF5F1FAC0F9200DB7B90 /* LaunchScreen.storyboard in Resources */,
+				2362A5261FB1C103006970FE /* XXFingerViewController.xib in Resources */,
 				2364DFBD1FAC19D200DB7B90 /* CLLockVC.xib in Resources */,
 				2364DF5C1FAC0F9200DB7B90 /* Assets.xcassets in Resources */,
 				2364DF5A1FAC0F9200DB7B90 /* Main.storyboard in Resources */,
@@ -437,6 +458,7 @@
 				2364DF911FAC11E500DB7B90 /* Tools.m in Sources */,
 				2364DFC81FAC19D200DB7B90 /* GesturePasswordViewController.m in Sources */,
 				2364DFC31FAC19D200DB7B90 /* CLLockInfoView.m in Sources */,
+				2362A5251FB1C103006970FE /* XXFingerViewController.m in Sources */,
 				2364DFC61FAC19D200DB7B90 /* CLLockMainView.m in Sources */,
 				2364DF7B1FAC109E00DB7B90 /* WebErrorView.m in Sources */,
 				2364DFBF1FAC19D200DB7B90 /* CoreLockConst.m in Sources */,

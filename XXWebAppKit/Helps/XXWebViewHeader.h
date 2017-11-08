@@ -22,9 +22,10 @@
 
 // ==========================KEY===================================
 #define SyncronizeLoginCookie           @"SyncronizeLoginCookie"
-#define GesturePasswordStoreKey         @"GesturePasswordStoreKey"
+#define GestureOrSingerPasswordStoreKey         @"GestureOrSingerPasswordStoreKey"
 #define SkipGesturePwdSettingKey        @"SkipGesturePwdSettingKey"
 #define GesturePasswordPrefix           @"GesturePasswordPrefix"
+#define SingerPasswordPrefix           @"SingerPasswordPrefix"
 // ==========================KEY===================================
 
 #endif /* XXWebViewHeader_h */
